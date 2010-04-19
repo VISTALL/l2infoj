@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <add key="XMX" value="-Xmx512m"/>
+    <add key="XMS" value="-Xms512m"/>
+    <add key="JAVA_HOME" value="C:/jdk1.6.0_11/bin/"/>
+</settings>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="[QUICK] L2InfoJ Resources" default="dist" basedir=".">
+  <description>jdevelopstation.com</description>
+  <property name="java" location="java-resources" />
+  <property name="lib" location="libs" />
+  <property name="build" location="build" />
+  <property name="build.resource" location="${build}/resource" />
+  <property name="build.dist" location="${build}/dist" />
+  <target name="clean" description="Removes build directory.">
+    <delete dir="${build}" />
+  </target>
+  <target name="init" description="Create the output directories.">
+    <mkdir dir="${build}" />
+    <mkdir dir="${build.resource}" />
+  </target>
+  <target name="compile" depends="init" description="Compile the source.">
+    <copy todir="${build.resource}/jds/l2infoj/resources/images">
+      <fileset dir="${java}/jds/l2infoj/resources/images">
+        <include name="*.png" />
+      </fileset>
+    </copy>
+    <copy todir="${build.resource}/jds/l2infoj/resources/datas">
+      <fileset dir="${java}/jds/l2infoj/resources/datas">
+        <include name="*.txt" />
+      </fileset>
+    </copy>
+  </target>
+  <target name="jar" depends="clean,compile" description="Create the jar file">
+    <jar destfile="${build}/l2infoj-resources.jar">
+      <fileset dir="${build.resource}" />
+      <manifest>
+        <attribute name="Main-Class" value="jds.l2infoj.L2InfoJ" />
+      </manifest>
+    </jar>
+  </target>
+  <target name="dist" depends="jar"></target>
+</project>

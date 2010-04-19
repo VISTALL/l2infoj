@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="[CRYPT] L2InfoJ" default="dist" basedir=".">
+	<description>jdevelopstation.com</description>
+
+	<property name="java" location="java"/>
+	<property name="lib" location="libs"/>
+
+	<property name="build" location="build"/>
+	<property name="build.classes" location="${build}/classes"/>
+	<property name="build.dist" location="${build}/dist"/>
+
+
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean" description="Removes build directory.">
+		<delete dir="${build}"/>
+	</target>
+
+	<target name="init" description="Create the output directories.">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.classes}"/>
+	</target>
+
+	<target name="compile" depends="init" description="Compile the source.">
+
+		<javac destdir="${build.classes}" optimize="off" debug="on" source="1.6" target="1.6" encoding="UTF-8"
+			   nowarn="off">
+			<compilerarg value="-Xlint:all"/>
+			<src path="${java}"/>
+			<classpath refid="classpath"/>
+		</javac>
+
+	</target>
+
+	<target name="jar" depends="clean,compile" description="Create the jar file">
+		<jar destfile="${build}/l2infoj.jar">
+			<fileset dir="${build.classes}"/>
+		</jar>
+	</target>
+
+	<target name="dist" depends="jar">
+		<taskdef name="yguard" classname="com.yworks.yguard.YGuardTask" classpath="${lib}/yguard.jar"/>
+		<yguard>
+			<inoutpair in="${build}/l2infoj.jar" out="${build}/l2infoj_obs.jar"/>
+			<externalclasses>
+				<pathelement location="${lib}/swingx.jar"/>
+				<pathelement location="${lib}/forms_rt.jar"/>
+				<pathelement location="${lib}/javolution-5.4.3.jar"/>
+				<pathelement location="${lib}/trove4j.jar"/>
+				<pathelement location="${lib}/jpcap.jar"/>
+				<pathelement location="${lib}/jRegistryKey.jar"/>
+				<pathelement location="${lib}/l2infoj-resources.jar"/>	
+   		 	</externalclasses>
+
+			<shrink logfile="${build}/sk.log">
+				<property name="error-checking" value="pedantic"/>
+				<property name="naming-scheme" value="mix"/>
+				<property name="language-conformity" value="illegal"/>
+				<property name="expose-attributes" value="Override"/>
+				<keep>
+					<class classes="protected" methods="protected" fields="protected">
+						<patternset>
+							<include name="jds.l2infoj.L2InfoJ"/>
+						</patternset>
+					</class>
+					<method class="jds.jn.Jn" name="void main(java.lang.String[])"/>
+				</keep>
+				
+			</shrink>
+
+			<rename mainclass="jds.l2infoj.L2InfoJ" logfile="${build}/rename.log">
+				<property name="error-checking" value="pedantic"/>
+				<property name="naming-scheme" value="mix"/>
+				<property name="language-conformity" value="illegal"/>
+				<property name="expose-attributes" value="Override"/>				
+				<keep>
+					<class classes="protected" methods="protected" fields="protected">
+						<patternset>
+							<include name="jds.l2infoj.L2InfoJ"/>
+						</patternset>
+					</class>
+
+					<method class="jds.l2infoj.L2InfoJ" name="void main(java.lang.String[])"/>
+				</keep>				
+			</rename>
+
+		</yguard>
+	</target>
+</project>

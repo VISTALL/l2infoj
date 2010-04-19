@@ -1,0 +1,8 @@
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\bin\Release\L2InfoJ.exe
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\bin\Release\L2InfoJ.pdb
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\ResolveAssemblyReference.cache
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\L2InfoJ.MessageWindow.resources
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\L2InfoJ.Properties.Resources.resources
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\L2InfoJ.csproj.GenerateResource.Cache
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\L2InfoJ.exe
+G:\J Develop Station\l2\L2InfoJ\develop\starter\L2InfoJ\obj\Release\L2InfoJ.pdb
